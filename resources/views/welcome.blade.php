@@ -38,7 +38,7 @@
                     </svg>
                 </div>
                 <div class="flex justify-center">
-                    <Fernanda style="font-size: 40px;">Fernanda Pranata - 2217051146</p>
+                    <Fernanda style="font-size: 42px;">Fernanda Pranata - 2217051146</p>
                 </div>
 
 
