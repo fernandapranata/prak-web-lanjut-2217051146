@@ -19,7 +19,7 @@
 
         .profile-container {
             background-color: #fff;
-            padding: 30px;
+            padding: 32px;
             border-radius: 15px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             text-align: center;
