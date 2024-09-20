@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfilrController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/profile', [ProfilrController::class, 'profile']);
+
+// Route::get('/profile/{nama}', )
