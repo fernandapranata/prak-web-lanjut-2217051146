@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfilrController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,7 @@ Route::get('/', function () {
 Route::get('/profile', [ProfilrController::class, 'profile']);
 
 // Route::get('/profile/{nama}', )
+
+Route::get('/user/profile', [ProfileController::class, 'profile']);
+Route::get('/user/create', function () {return view('create_user');});
+Route::post('/user/store', [UserController::class, 'store'])->name('user.store');

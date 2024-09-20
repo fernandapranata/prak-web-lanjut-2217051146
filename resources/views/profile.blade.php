@@ -9,7 +9,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #ADD8E6; /* Warna biru muda */
+            background-color: #ADD8E6; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -82,7 +82,7 @@
 <body>
     <div class="profile-container">
         <div class="profile-image">
-            <img src="Fernanda Pranata.jpg" alt="Profile Image">
+            <img src="{{ asset('assets/img/Fernanda Pranata.jpg') }}" alt="Foto Profil"> 
         </div>
 
         <div class="profile-details">
