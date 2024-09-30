@@ -3,93 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Profile User</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #ADD8E6; /* Warna biru muda */
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
+            background-color: #ADD8E6; 
         }
-
         .profile-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             text-align: center;
-            width: 350px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-container:hover {
-            transform: scale(1.08);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-image img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-            transition: box-shadow 0.3s ease;
-        }
-
-        .profile-image img:hover {
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-details {
-            margin-top: 25px;
-        }
-
-        .profile-info {
-            background-color: #e0f7fa;
-            padding: 12px;
-            margin: 12px 0;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
+            background-color: #fff; 
+            padding: 20px;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            width: 1000px; 
         }
-
-        .profile-info:first-child {
-            color: #00796b;
+        .profile-info {
+            width: 300px;
+            margin: 0 auto;
         }
-
-        .profile-info:nth-child(2) {
-            color: #00796b;
+        .info-item {
+            background-color: #ADD8E6;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            color: #333;
+            font-size: 16px;
         }
-
-        .profile-info:last-child {
-            color: #00796b;
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
         }
-
-        .profile-info:hover {
-            background-color: #b2ebf2;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        .profile-pic {
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 4px solid #333;
         }
-
+        .form-upload {
+            margin-top: 20px;
+        }
+        .info-item-inline {
+            background-color: #ADD8E6;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            color: #333;
+            font-size: 16px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
     </style>
 </head>
 <body>
-    <div class="profile-container">
-        <div class="profile-image">
-            <img src="Fernanda Pranata.jpg" alt="Profile Image">
-        </div>
-
-        <div class="profile-details">
-            <div class="profile-info">{{ $nama }}</div>
-            <div class="profile-info">{{ $kelas }}</div>
-            <div class="profile-info">{{ $npm }}</div>
+<div class="profile-container">
+    <h1>Profile User</h1>
+    <div class="profile-info">
+        <img src="{{ asset('assets/img/Fernanda Pranata.jpg') }}" alt="Profile Picture" class="profile-pic" width="150" height="150">
+      
+        <div class="info-item">Nama: {{ $nama }}</div>
+        <div class="info-item">NPM: {{ $npm }}</div>
+       
+        <div class="info-item-inline">
+            <span>Kelas:</span>
+            <span>{{ $nama_kelas ?? 'Kelas tidak ditemukan' }}</span>
         </div>
     </div>
+</div>
 </body>
 </html>
