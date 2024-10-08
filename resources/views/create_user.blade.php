@@ -28,6 +28,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 400px;
+            margin: auto;
         }
 
         .form-container h2 {
@@ -75,6 +76,7 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            width: 100%;
         }
 
         button:hover {
@@ -90,7 +92,9 @@
         }
     </style>
 </head>
-<body>
+
+@extends('layouts.app') 
+@section('content') 
 <div class="form-container">
     <h2>Create User</h2>
     <form action="{{ route('user.store') }}" method="POST">
@@ -112,5 +116,5 @@
         <button type="submit">Submit</button>
     </form>
 </div>
-</body>
+@endsection 
 </html>

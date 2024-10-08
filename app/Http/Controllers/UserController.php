@@ -2,19 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\UserModel;
 
 class UserController extends Controller
 {
+    public $userModel; 
+    public $kelasModel;
+
     public function create()
     {
-        return view('create_user', [
-            'kelas' => Kelas::all(),
-        ]);
+        $kelasModel = new Kelas();
+        $kelas = $this->kelasModel->getKelas();
+    
+        $data = [
+            'title' => 'Create User',
+            'kelas' => $kelas,
+        ];
+    
+        return view('create_user', $data);
     }
 
+    public function __construct() 
+    { 
+        $this->userModel = new UserModel(); 
+        $this->kelasModel = new Kelas(); 
+    } 
+
+    public function index() 
+    { 
+    $data = [ 
+        'title' => 'Create User', 
+        'kelas' => $this->userModel->getUser(), 
+    ]; 
+
+    $users = UserModel::with('kelas')->get();
+ 
+    return view('list_user', compact('users'), $data); 
+    }
+    
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -29,6 +57,8 @@ class UserController extends Controller
         ];
     
         $user = UserModel::create($validatedData);
+
+        return redirect()->to('/user');
     
         $user->load('kelas');
     
@@ -38,6 +68,7 @@ class UserController extends Controller
             'nama_kelas' => $user->kelas->nama_kelas ?? 'Kelas tidak ditemukan',
         ]);
     }
+    
     public function uploadProfilePicture(Request $request)
     {
         $request->validate([
@@ -71,4 +102,5 @@ class UserController extends Controller
             'profile_picture' => session('profile_picture', 'public/assets/img/Fernanda Pranaata.jpg'),
         ]);
     }
+    
 }
