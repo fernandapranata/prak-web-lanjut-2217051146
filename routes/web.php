@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfilrController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController; // pastikan ada import ini
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,15 +15,14 @@ use App\Http\Controllers\UserController; // pastikan ada import ini
 |
 */
 
-Route::get('/', function () {return view('welcome');});
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/profile', [ProfileController::class, 'profile']);
+Route::get('/profile', [ProfilrController::class, 'profile']);
+
+// Route::get('/profile/{nama}', )
+
 Route::get('/user/profile', [ProfileController::class, 'profile']);
 Route::get('/user/create', function () {return view('create_user');});
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
-Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
-Route::post('/profile/upload', [ProfileController::class, 'uploadProfilePicture'])->name('upload.profile.picture');
-Route::get('/user', [UserController::class, 'index'])->name('user.index');
-Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
-Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show');
-Route::resource('users', UserController::class);

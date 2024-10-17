@@ -9,7 +9,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #ADD8E6;
+            background-color: #ADD8E6; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -77,35 +77,18 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            text-decoration: none;
-            padding: 10px 15px;
-            background-color: #00796b;
-            color: white;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .back-button:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
-    <a href="{{ route('users.index') }}" class="back-button">Kembali List Data</a>
-
     <div class="profile-container">
         <div class="profile-image">
-            <img src="{{ asset($user->foto ?? 'assets/img/default-foto.jpg') }}" alt="Profile Image">
+            <img src="{{ asset('assets/img/Fernanda Pranata.jpg') }}" alt="Foto Profil"> 
         </div>
 
         <div class="profile-details">
-            <div class="profile-info">Nama: {{ $user->nama }}</div>
-            <div class="profile-info">Kelas: {{ $user->kelas->nama_kelas ?? 'Kelas tidak ditemukan' }}</div>
-            <div class="profile-info">NPM: {{ $user->npm }}</div>
+            <div class="profile-info">{{ $nama }}</div>
+            <div class="profile-info">{{ $kelas }}</div>
+            <div class="profile-info">{{ $npm }}</div>
         </div>
     </div>
 </body>

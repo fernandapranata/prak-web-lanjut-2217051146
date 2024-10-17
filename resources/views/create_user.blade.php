@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create User Form</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -28,7 +27,6 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 400px;
-            margin: auto;
         }
 
         .form-container h2 {
@@ -42,47 +40,37 @@
         form {
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
-        label {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: #333;
-            font-size: 14px;
-            width: 100%;
-            text-align: left;
-        }
-
-        input, select {
+        input {
             padding: 14px;
             margin-bottom: 20px;
-            border: 2px solid #ddd;
+            border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 16px;
-            width: 100%;
+            transition: border-color 0.3s ease;
         }
 
-        select option[disabled] {
-            color: #999;
+        input:focus {
+            border-color: #2193b0;
+            outline: none;
         }
 
         button {
             padding: 14px;
-            background-color: #333;
+            background-color: #2193b0;
             color: #fff;
             border: none;
             border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            width: 100%;
         }
 
         button:hover {
-            background-color: #555;
+            background-color: #176e87;
         }
-
+        
         button:active {
             transform: scale(0.98);
         }
@@ -92,35 +80,16 @@
         }
     </style>
 </head>
-
-@extends('layouts.app') 
-@section('content') 
+<body>
 <div class="form-container">
     <h2>Create User</h2>
-
-    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('user.store') }}" method="POST">
         @csrf
-
-        <label for="nama">Nama:</label>
-        <input type="text" id="nama" name="nama" placeholder="Nama" required>
-
-        <label for="npm">NPM:</label>
-        <input type="text" id="npm" name="npm" placeholder="NPM" required>
-
-        <label for="kelas_id">Kelas:</label>
-        <select id="kelas_id" name="kelas_id" required>
-            <option value="" disabled selected>Pilih Kelas</option>
-            @foreach($kelas as $kelasItem)
-                <option value="{{ $kelasItem->id }}">{{ $kelasItem->nama_kelas }}</option>
-            @endforeach
-        </select>
-
-        <label for="foto">Foto:</label>
-        <input type="file" id="foto" name="foto"><br><br>
-
+        <input type="text" name="nama" placeholder="Nama" required>
+        <input type="text" name="npm" placeholder="NPM" required>
+        <input type="text" name="kelas" placeholder="Kelas" required>
         <button type="submit">Submit</button>
     </form>
 </div>
-@endsection
-
+</body>
 </html>
