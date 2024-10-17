@@ -1,31 +1,46 @@
-@extends('layouts.app') 
- 
-@section ('content') 
-<table> 
-   <thead> 
-      <tr> 
-         <th>ID</th> 
-         <th>Nama</th> 
-         <th>NPM</th> 
-         <th>Kelas</th> 
-         <th>Aksi</th> 
-      </tr> 
-   </thead> 
-   <tbody> 
-    @foreach($users as $user)
-    <tr>
-        <td>{{ $user->id }}</td>
-        <td>{{ $user->nama }}</td>
-        <td>{{ $user->npm }}</td>
-        <td>{{ $user->kelas->nama_kelas ?? 'Kelas Tidak Ditemukan' }}</td>
-        <td>
-            <a href="/edit/{{ $user['id'] }}" class="btn btn-warning">Edit</a>
-            <a href="/delete/{{ $user['id'] }}" class="btn btn-danger">Hapus</a>
-        </td>
-    </tr>
-    @endforeach
-   </tbody> 
-</table> 
-@endsection 
+@extends('layouts.app')
 
+@section('content')
 
+<a href="{{ route('users.create') }}" class="btn-custom mb-2">Tambah Pengguna Baru</a>
+
+<h1 class="list-data-title text-center mb-4">List Data</h1>
+
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Nama</th>
+                <th class="text-center">NPM</th>
+                <th class="text-center">Kelas</th>
+                <th class="text-center">Foto</th>
+                <th class="text-center">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($users as $user)
+            <tr>
+                <td class="text-center">{{ $user->id }}</td>
+                <td class="text-center">{{ $user->nama }}</td>
+                <td class="text-center">{{ $user->npm }}</td>
+                <td class="text-center">{{ $user->kelas->nama_kelas ?? 'Kelas Tidak Ditemukan' }}</td>
+                <td class="text-center">
+                    @if($user->foto)
+                    <img src="{{ asset($user->foto ?? 'uploads/img/default.jpg') }}" alt="Foto Pengguna" width="100">
+                    @else
+                        <span>Foto tidak tersedia</span>
+                    @endif
+                </td>
+                <td class="text-center">
+                    <a href="{{ route('user.show', $user->id) }}" class="btn btn-warning me-2">View</a>
+                    <a href="/edit/{{ $user->id }}" class="btn btn-primary me-2">Edit</a>
+                    <a href="/delete/{{ $user->id }}" class="btn btn-danger">Hapus</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+@endsection

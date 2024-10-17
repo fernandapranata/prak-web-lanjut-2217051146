@@ -3,82 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile User</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Profile</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
         body {
             font-family: 'Poppins', sans-serif;
+            background-color: #ADD8E6;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #ADD8E6; 
         }
+
         .profile-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             text-align: center;
-            background-color: #fff; 
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 1000px; 
+            width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .profile-info {
-            width: 300px;
-            margin: 0 auto;
+
+        .profile-container:hover {
+            transform: scale(1.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
-        .info-item {
-            background-color: #ADD8E6;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 10px;
-            font-weight: 600;
-            text-align: center;
-            color: #333;
-            font-size: 16px;
-        }
-        h1 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-        }
-        .profile-pic {
-            margin-bottom: 20px;
+
+        .profile-image img {
             border-radius: 50%;
-            border: 4px solid #333;
+            width: 150px;
+            height: 150px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transition: box-shadow 0.3s ease;
         }
-        .form-upload {
-            margin-top: 20px;
+
+        .profile-image img:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
         }
-        .info-item-inline {
-            background-color: #ADD8E6;
-            padding: 10px;
-            border-radius: 10px;
-            font-weight: 600;
-            text-align: center;
+
+        .profile-details {
+            margin-top: 25px;
+        }
+
+        .profile-info {
+            background-color: #e0f7fa;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
             color: #333;
-            font-size: 16px;
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-info:first-child {
+            color: #00796b;
+        }
+
+        .profile-info:nth-child(2) {
+            color: #00796b;
+        }
+
+        .profile-info:last-child {
+            color: #00796b;
+        }
+
+        .profile-info:hover {
+            background-color: #b2ebf2;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #00796b;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-<div class="profile-container">
-    <h1>Profile User</h1>
-    <div class="profile-info">
-        <img src="{{ asset('assets/img/Fernanda Pranata.jpg') }}" alt="Profile Picture" class="profile-pic" width="150" height="150">
-      
-        <div class="info-item">Nama: {{ $nama }}</div>
-        <div class="info-item">NPM: {{ $npm }}</div>
-       
-        <div class="info-item-inline">
-            <span>Kelas:</span>
-            <span>{{ $nama_kelas ?? 'Kelas tidak ditemukan' }}</span>
+    <a href="{{ route('users.index') }}" class="back-button">Kembali List Data</a>
+
+    <div class="profile-container">
+        <div class="profile-image">
+            <img src="{{ asset($user->foto ?? 'assets/img/default-foto.jpg') }}" alt="Profile Image">
+        </div>
+
+        <div class="profile-details">
+            <div class="profile-info">Nama: {{ $user->nama }}</div>
+            <div class="profile-info">Kelas: {{ $user->kelas->nama_kelas ?? 'Kelas tidak ditemukan' }}</div>
+            <div class="profile-info">NPM: {{ $user->npm }}</div>
         </div>
     </div>
-</div>
 </body>
 </html>

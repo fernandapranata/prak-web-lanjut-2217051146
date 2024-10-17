@@ -12,15 +12,61 @@
            font-family: 'Poppins', Arial, sans-serif;
        }
 
-       h1, h2 {
-           text-align: center;
-           margin: 20px 0;
-           color: #343a40;
+       .list-data-title {
+           font-size: 28px; 
+           font-weight: 700;
+           color: #000000; 
+           letter-spacing: 1px;
+           text-transform: uppercase;
+           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+           position: relative;
+           padding-bottom: 10px;
+       }
+
+       .list-data-title::after {
+           content: '';
+           position: absolute;
+           left: 50%;
+           bottom: 0;
+           transform: translateX(-50%);
+           width: 80px; 
+           height: 2px;
+           background-color: #000000; 
+       }
+
+       .btn-custom {
+           font-size: 16px; 
+           padding: 10px 20px;
+           background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+           border-radius: 50px;
+           color: white;
+           text-decoration: none;
+           box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+           transition: all 0.3s ease;
+           display: inline-flex;
+           align-items: center;
+           gap: 10px;
+       }
+
+       .btn-custom i {
+           font-size: 20px;
+           color: white;
+       }
+
+       .btn-custom:hover {
+           background: linear-gradient(135deg, #218838 0%, #28a745 100%);
+           transform: translateY(-2px);
+           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+       }
+
+       .btn-custom:active {
+           transform: translateY(0);
+           box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
        }
 
        .table-container {
            margin: 50px auto;
-           width: 90%;
+           width: 100%;
            max-width: 1200px;
            background-color: #ffffff;
            padding: 30px;
@@ -51,20 +97,6 @@
        table tbody tr:hover {
            background-color: #e9ecef;
            cursor: pointer;
-       }
-
-       .btn-custom {
-           display: inline-block;
-           padding: 10px 20px;
-           background-color: #007bff;
-           color: white;
-           border-radius: 5px;
-           text-decoration: none;
-           transition: background-color 0.3s ease;
-       }
-
-       .btn-custom:hover {
-           background-color: #0056b3;
        }
    </style>
 </head>

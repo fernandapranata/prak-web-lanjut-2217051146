@@ -97,8 +97,10 @@
 @section('content') 
 <div class="form-container">
     <h2>Create User</h2>
-    <form action="{{ route('user.store') }}" method="POST">
+
+    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+
         <label for="nama">Nama:</label>
         <input type="text" id="nama" name="nama" placeholder="Nama" required>
 
@@ -113,8 +115,12 @@
             @endforeach
         </select>
 
+        <label for="foto">Foto:</label>
+        <input type="file" id="foto" name="foto"><br><br>
+
         <button type="submit">Submit</button>
     </form>
 </div>
-@endsection 
+@endsection
+
 </html>
